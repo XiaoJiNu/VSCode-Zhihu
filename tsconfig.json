@@ -1,0 +1,18 @@
+{
+	"compilerOptions": {
+		"module": "commonjs",
+		"target": "es6",
+		"outDir": "out",
+		"sourceMap": true,
+		// "strict": true   /* enable all strict type-checking options */
+	},
+	"include": [
+		"test/**/*.ts",
+		"test/*.ts"
+	],
+	"exclude": [
+		"node_modules",
+		".vscode-test",
+		"src/**/*"
+	]
+}
