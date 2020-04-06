@@ -94,6 +94,10 @@ export function ColumnAPI(urltoken: string) {
 	return `https://www.zhihu.com/api/v4/members/${urltoken}/column-contributions?include=data%5B*%5D.column.intro%2Cfollowers%2Carticles_count&offset=0&limit=20`
 }
 
+export function TopicsAPI(searchToken: string) {
+	return `https://zhuanlan.zhihu.com/api/autocomplete/topics?token=${searchToken}&max_matches=5&use_similar=0&topic_filter=1`
+}
+
 /**
  * Html Page: 'https://zhuanlan.zhihu.com/p/${articleId}'
  */
@@ -109,6 +113,27 @@ export const ArticleAPI = 'https://www.zhihu.com/api/v4/articles'
  */
 export const SearchAPI: string = "https://www.zhihu.com/api/v4/search_v3";
 
+/**
+ * return the href link of weixin qrcode
+ * @param qrId the qrcode img src
+ */
+export function WeixinLoginQRCodeAPI(qrId: string) {
+	return `https://open.weixin.qq.com${qrId}` + 
+	"?appid=wx268fcfe924dcb171&redirect_uri=https%3A%2F%2Fwww.zhihu.com%2Foauth%2Fcallback%2Fwechat%3Faction%3Dlogin%26from%3D" +
+	"&response_type=code&scope=snsapi_login&state=" +
+	WeixinState +
+	"#wechat"
+
+}
+
+export const WeixinState = "564c6550647442736e4552394f795a37474d4b4f4d4a794e7a6570414b394632";
+
+export function WeixinLoginPageAPI(): string {
+	return "https://open.weixin.qq.com/connect/qrconnect" + 
+	"?appid=wx268fcfe924dcb171&redirect_uri=https%3A%2F%2Fwww.zhihu.com%2Foauth%2Fcallback%2Fwechat%3Faction%3Dlogin%26from%3D" +
+	"&response_type=code&scope=snsapi_login&state=" +
+	WeixinState
+}
 
 /**
  *  get sms
